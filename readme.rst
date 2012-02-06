@@ -1,7 +1,7 @@
 django-another-report-maker
 ===========================
 
-This is my idea, that we will develop, for  Django, allowing users to make csv reports as soon as possible.
+This is our idea, that we will develop, for  Django, allowing users to make csv reports as soon as possible.
 
 We will add ``INSTALL`` instructions later.
 
