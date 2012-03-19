@@ -11,7 +11,7 @@ import os
 
 
 class ReportTest(TestCase):
-    def test_basic_addition(self):
+    def test_basic_report_generation(self):
         for i in xrange(0, 100):
             s = SimpleModel()
             s.name = i

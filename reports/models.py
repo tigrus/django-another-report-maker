@@ -2,6 +2,8 @@ from django.db import models
 import datetime
 import csv
 
+class CSVError(Exception):
+    pass
 
 class ReportMaker(object):
     def __init__(self, objects=[]):
@@ -14,11 +16,14 @@ class ReportMaker(object):
         writer.writerow(rfields)
 
         for obj in self.objects:
-            row = []
-            for field in rfields:
-                fvalue = getattr(obj, field, '')
-                row.append(fvalue)
-            writer.writerow(row)
+            try:
+                row = []
+                for field in rfields:
+                    fvalue = getattr(obj, field, '')
+                    row.append(fvalue)
+                writer.writerow(row)
+            except Exception as e:
+                raise CSVError((e.message, str(row)))
         return fname
 
 
