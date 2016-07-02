@@ -36,3 +36,7 @@ class ReportQuerySet(models.query.QuerySet):
 class ReportManager(models.Manager):
     def get_query_set(self):
         return ReportQuerySet(self.model)
+
+    # Alias for django 1.9
+    def get_queryset(self):
+        return self.get_query_set()
