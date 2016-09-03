@@ -29,9 +29,9 @@ class ReportMaker(object):
 
 
 class ReportQuerySet(models.query.QuerySet):
-    def make_report(self):
+    def make_report(self, name_map={}):
         r = ReportMaker(self)
-        return r.make_report()
+        return r.make_report(name_map={})
 
 
 class ReportManager(models.Manager):
