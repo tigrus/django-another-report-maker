@@ -9,11 +9,12 @@ class ReportMaker(object):
     def __init__(self, objects=[]):
         self.objects = objects
 
-    def make_report(self):
+    def make_report(self, name_map={}):
         rfields = self.objects.model.report_fields
         fname = self.objects.model.file_prefix % datetime.datetime.now().isoformat()
         writer = csv.writer(open(fname, 'w+'))
-        writer.writerow(rfields)
+        writer.writerow([name_map.get(x, x) for x in rfields])
+
 
         for obj in self.objects:
             try:
