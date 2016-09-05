@@ -24,14 +24,15 @@ class ReportMaker(object):
                     row.append(fvalue)
                 writer.writerow(row)
             except Exception as e:
-                raise CSVError((e.message, str(row)))
+                raise CSVError((str(e), str(row)))
+                # raise CSVError((e.message, str(row)))
         return fname
 
 
 class ReportQuerySet(models.query.QuerySet):
     def make_report(self, name_map={}):
         r = ReportMaker(self)
-        return r.make_report(name_map=name_map)
+        return r.make_report(name_map={})
 
 
 class ReportManager(models.Manager):
